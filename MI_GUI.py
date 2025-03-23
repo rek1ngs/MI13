@@ -17,6 +17,7 @@ sg.set_options(font=('Arial Bold', 16))
 
 
 
+
 # ----------------------------
 # LOGS "OPCIJAS" | FUNCKIJA
 # ----------------------------
@@ -52,6 +53,8 @@ def opcijas_logs():
         elif event == "-SAKT-":
             opciju_logs.close()
             return values
+
+
 
 
 
@@ -119,6 +122,8 @@ def galvenais_logs(VirkneString, SpeletajaSimbols, GajienaVeicejs):
 
 
 
+
+
 # ----------------------------
 # GĀJIENA PĀRBAUDE | FUNCKIJA
 # ----------------------------
@@ -170,6 +175,8 @@ def CopySymbol(SpeletajaSimbols, window1):
         sg.popup("Nevar veikt šādu gājienu. Mēģiniet vēlreiz!")
         return False
     
+
+
 
 
 

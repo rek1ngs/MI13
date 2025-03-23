@@ -10,6 +10,7 @@ import sys #Bibliotēka, kas ļauj ietekmēt Pythona vidi pārtraukt kodu utml.
 
 
 
+
 # ----------------------------
 # SPĒLES "DATUBĀZE" | MAINĪGIE
 # ----------------------------
@@ -24,15 +25,21 @@ maksimizetajs = None
 
 
 
+
 # ----------------------------
 # SPĒLES "DATUBĀZE" | IESTATĪJUMI
 # ----------------------------
 automatiski_genereta = True #Vai ģenerēt virkni vai arī izmantot statiski ievadītu
 automatiski_generatas_virknes_garums_min = 15 #Minimālais garums virknei
 automatiski_generatas_virknes_garums_max = 25 #Maksimālais garums virknei
-statiska_virkne = 'XOOXX' #Statiskā virkne, kas tiks izvēlēta, ja tiks izslēgta automātiskās ģenerēšanas funkcija
+statiska_virkne = 'XOOXXO' #Statiskā virkne, kas tiks izvēlēta, ja tiks izslēgta automātiskās ģenerēšanas funkcija
 dzilums = 3 #Šis norāda cik dziļi koks ģenerēs virsotnes, ņemot verā, ka resursu nav pietiekami, lai visu koku ģenerētu
 izvadit = True #Vai pēc katra gājiena izvadīt daļējo koku terminālī?
+
+
+
+
+
 
 
 
@@ -65,6 +72,7 @@ else:
 
 
 
+
 # 2 | SAGATAVOŠANĀS SPĒLEI
 # Kad saņemta atbilde, tad mēs sagatavojamies spēlei
 # 2.1 | Tiek ģenerēta nejauša virkne, ja automātiskā ģenerēšana ir ieslēgta
@@ -89,6 +97,7 @@ if statuss:
     sys.exit() #Iziet no koda un beidz
 else:
     print("Atrasti gājieni - turpinam") #Ja tika atrasts kāds gājiens, tad tiek turpināts ar kodu un izvadīts paziņojums
+
 
 
 
@@ -143,10 +152,6 @@ while True:
 
 
 
-
-
-
-
     ####################################
     ############  DATORS  ##############
     ####################################
@@ -173,16 +178,11 @@ while True:
         elif virkne == True:
             print("Turpināt spēli")
 
-
-
             #Atkarībā no algoritma izsaucam pareizo funckiju
             if izmantotais_algoritms == 'Minimaksa':
                 vertiba, izveleta_virsotne = Algorithms.minimax(izveleta_virsotne, dzilums, speles_koks, True, maksimizetajs) #Izmantojot minimax algoritmu tiek atrasta nākošā labākā virsotne
             else:
-                vertiba, izveleta_virsotne = Algorithms.alpha_beta_pruning(izveleta_virsotne, dzilums, float('-inf'), float('inf'), speletajs_1, speles_koks, True, maksimizetajs)
-
-
-
+                vertiba, izveleta_virsotne = Algorithms.alpha_beta_pruning(izveleta_virsotne, dzilums, float('-inf'), float('inf'), speles_koks, True, maksimizetajs)  #Izmantojot Alpha-Beta algotritmu atrodam nākošo labāko visotni
 
             #Apstrādājam iegūto vērtību, iegustam virkni, lai varam attēlot un uzstādām nākoso gājienu
             sobrideja_virkne = izveleta_virsotne.virkne #Uzstāda šobrīdējo_virkni uz izvēlēto virkni
@@ -197,6 +197,9 @@ while True:
                     break
                 else:
                     print("Tika atrasti iespējami gājieni")
+
+
+
 
 
 
