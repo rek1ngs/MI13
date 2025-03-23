@@ -102,10 +102,90 @@ def alpha_beta_pruning(node, depth, alpha, beta, player_1, game_tree, maximizing
             if beta <= alpha:
                 break 
         return min_eval, best_child
-    
+
+# ----------------------------
+# ALFA BETA FUNKCIJA #2
+# ----------------------------
+# https://tonypoer.io/2016/10/28/implementing-minimax-and-alpha-beta-pruning-using-python/
+# Ar papildus labojumiem
 
 
+'''
+class AlphaBeta:
+    def __init__(self, game_tree):
+        self.game_tree = game_tree  # Your Speles_koks object
+        self.root = game_tree.virsotnu_kopa[0]  # Root node (first node in virsotnu_kopa)
+        return
 
+    def alpha_beta_search(self, node):
+        infinity = float('inf')
+        best_val = -infinity
+        beta = infinity
+
+        successors = self.get_successors(node)
+        best_state = None
+        for state in successors:
+            value = self.min_value(state, best_val, beta)
+            if value > best_val:
+                best_val = value
+                best_state = state
+        print(f"AlphaBeta: Utility Value of Root Node: {best_val}")
+        print(f"AlphaBeta: Best State is: {best_state.virkne}")
+        return best_state
+
+    def max_value(self, node, alpha, beta):
+        print(f"AlphaBeta–>MAX: Visited Node :: {node.virkne}")
+        if self.is_terminal(node):
+            return self.get_utility(node)
+        infinity = float('inf')
+        value = -infinity
+
+        successors = self.get_successors(node)
+        for state in successors:
+            value = max(value, self.min_value(state, alpha, beta))
+            if value >= beta:
+                return value
+            alpha = max(alpha, value)
+        return value
+
+    def min_value(self, node, alpha, beta):
+        print(f"AlphaBeta–>MIN: Visited Node :: {node.virkne}")
+        if self.is_terminal(node):
+            return self.get_utility(node)
+        infinity = float('inf')
+        value = infinity
+
+        successors = self.get_successors(node)
+        for state in successors:
+            value = min(value, self.max_value(state, alpha, beta))
+            if value <= alpha:
+                return value
+            beta = min(beta, value)
+        return value
+
+    # Utility methods
+    def get_successors(self, node):
+        assert node is not None
+        # Get child nodes from loku_kopa
+        child_ids = self.game_tree.loku_kopa.get(node.id, [])
+        return [self.find_node_by_id(child_id) for child_id in child_ids]
+
+    def is_terminal(self, node):
+        assert node is not None
+        return len(self.game_tree.loku_kopa.get(node.id, [])) == 0
+
+    def get_utility(self, node):
+        assert node is not None
+        # Use your heuristic function to evaluate the node
+        from Heiristic import heiristiska
+        return heiristiska(node, 'P1')  # Adjust 'P1' or 'P2' based on the player
+
+    def find_node_by_id(self, node_id):
+        for node in self.game_tree.virsotnu_kopa:
+            if node.id == node_id:
+                return node
+        return None
+'''
 
 
 
