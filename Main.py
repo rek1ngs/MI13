@@ -1,3 +1,6 @@
+#pip3 install PySimpleGUI
+#python3 Main.py
+
 # ----------------------------
 # KODA SAGATAVOŠANA | IMPORTI
 # ----------------------------
@@ -33,7 +36,7 @@ automatiski_genereta = True #Vai ģenerēt virkni vai arī izmantot statiski iev
 automatiski_generatas_virknes_garums_min = 15 #Minimālais garums virknei
 automatiski_generatas_virknes_garums_max = 25 #Maksimālais garums virknei
 statiska_virkne = 'XOOXXO' #Statiskā virkne, kas tiks izvēlēta, ja tiks izslēgta automātiskās ģenerēšanas funkcija
-dzilums = 3 #Šis norāda cik dziļi koks ģenerēs virsotnes, ņemot verā, ka resursu nav pietiekami, lai visu koku ģenerētu
+dzilums = 4 #Šis norāda cik dziļi koks ģenerēs virsotnes, ņemot verā, ka resursu nav pietiekami, lai visu koku ģenerētu
 izvadit = True #Vai pēc katra gājiena izvadīt daļējo koku terminālī?
 
 
@@ -77,14 +80,7 @@ else:
 # Kad saņemta atbilde, tad mēs sagatavojamies spēlei
 # 2.1 | Tiek ģenerēta nejauša virkne, ja automātiskā ģenerēšana ir ieslēgta
 if automatiski_genereta == True:
-    length = random.randint(automatiski_generatas_virknes_garums_min, automatiski_generatas_virknes_garums_max)
-    sequence = ['X', 'O'] * (length // 2)  # Start with an even number of X and O
-    if length % 2 != 0:  # If the length is odd, add one more element
-        sequence.append(random.choice(['X', 'O']))
-    random.shuffle(sequence)  # Shuffle to ensure randomness
-    sobrideja_virkne = ''.join(sequence)
-
-    #sobrideja_virkne = ''.join(random.choices('XO' , k=random.randint(automatiski_generatas_virknes_garums_min, automatiski_generatas_virknes_garums_max))) # Attiecīgi no izvēlēm "XO" izvēlēsies k skaitu, ko savienos ar join.
+    sobrideja_virkne = ''.join(random.choices('XO' , k=random.randint(automatiski_generatas_virknes_garums_min, automatiski_generatas_virknes_garums_max))) # Attiecīgi no izvēlēm "XO" izvēlēsies k skaitu, ko savienos ar join.
 else:
     sobrideja_virkne = statiska_virkne # Savādāk, ja automatiskā ģenerēšana ir izslēgta, tad mēs šobrīdējo virkni uzstādam statisko virkni, kas definēta iestatījumos
 
@@ -142,7 +138,7 @@ while True:
 
             #Ja tika atrasta virsotne kokā
             if izveleta_virsotne:
-                value = Tree_Generation.generet_koku(speles_koks, izveleta_virsotne, 3, izvadit) #Tiek ģenerēts jauns koks no šīs izvēlētās virsotnes
+                value = Tree_Generation.generet_koku(speles_koks, izveleta_virsotne, dzilums, izvadit) #Tiek ģenerēts jauns koks no šīs izvēlētās virsotnes
                 # Ja funckija atgirež true, tas nozīmē, ka netika atrasts neviens vairs gājiens, ko var veikt.
                 if value:
                     print("Netika atrasti vairs gājieni")
@@ -190,7 +186,7 @@ while True:
 
             #Ja tika atrasta virsotne kokā
             if izveleta_virsotne:
-                value = Tree_Generation.generet_koku(speles_koks, izveleta_virsotne, 3, izvadit) #Tiek ģenerēts jauns koks no šīs izvēlētās virsotnes
+                value = Tree_Generation.generet_koku(speles_koks, izveleta_virsotne, dzilums, izvadit) #Tiek ģenerēts jauns koks no šīs izvēlētās virsotnes
                 # Ja funckija atgirež true, tas nozīmē, ka netika atrasts neviens vairs gājiens, ko var veikt.
                 if value:
                     print("Netika atrasti vairs gājieni")

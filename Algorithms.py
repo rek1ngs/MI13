@@ -7,6 +7,7 @@ import Heiristic
 # Pēc https://graspcoding.com/build-a-tic-tac-toe-python-game-using-the-minimax-algorithm/ pseidokoda
 # Izmantojot ChatGTP + nedaudz pielabots
 # Tiek ievadīts funkcijā virsotne, dziļums, spēles koks un sākuma spēlētajs
+# Dators vienmēr būs maksimizētājs
 def minimax(current_node, depth, game_tree, is_maximizing_player, maksimizetajs):
 
     # Tad mēs pārbaudām ja dziļums ir nulle (ja nav virsotnu) un vai ir gala virsotne (izsauc papildus funkciju)

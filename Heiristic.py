@@ -15,17 +15,19 @@ def heiristiska(virsotne, maksimizetajs):
     # 3. Cik ir XO un OX pāri (atkarīgs no spēletāja), jo piemēram O spēlētājam ir izdevīgāk ja ir XO pāri, jo var atņem punktu pretiniekam, bet OX nes mīnusus O spēlētājam
     if maksimizetajs == 'P1':
         punktu_atskriba = virsotne.p1 - virsotne.p2
-        pozitivi_pari = virsotne.virkne.count('OO')
+        pozitivi_pari = virsotne.virkne.count('XX')
         paositiva_izmaina = virsotne.virkne.count('XO')
         negativa_izmaina = virsotne.virkne.count('OX')
     else:
         punktu_atskriba = virsotne.p2 - virsotne.p1
-        pozitivi_pari = virsotne.virkne.count('XX')
+        pozitivi_pari = virsotne.virkne.count('OO')
         paositiva_izmaina = virsotne.virkne.count('OX')
         negativa_izmaina = virsotne.virkne.count('XO')
 
     # Attiecīgi izmantojot šīs vērtības atkarībā no maksimizētāja var aprēķināt "punktus" jeb heirisitsko vertību ar savu koeficientu
-    punkti = punktu_atskriba * 4 + pozitivi_pari * 2 + paositiva_izmaina - negativa_izmaina
+    punkti = punktu_atskriba * 10 + pozitivi_pari * 1 + paositiva_izmaina * 1 - negativa_izmaina * 1
+    #punkti = punktu_atskriba * 6 + pozitivi_pari * 3
+    #punkti = punktu_atskriba
 
     # Atgriežam Heiristisko vērtību atpakaļ uz izsaucošo algoritmu
     return punkti

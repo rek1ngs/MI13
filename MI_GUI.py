@@ -4,6 +4,7 @@
 import PySimpleGUI as sg
 
 
+
 # ----------------------------
 # SPĒLES "DATUBĀZE" | IESTATĪJUMI
 # ----------------------------

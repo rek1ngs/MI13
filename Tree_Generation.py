@@ -106,8 +106,23 @@ def gajiena_parbaude(sp, generetas_virsotnes, pasreizeja_virsotne):
                 # Ja sakrīt, tad aizstāj un iegūst jauno virkni [sakums:beigas] (+2 jo 2 neieskaita, tapec bus 2 simboli nevis 3)
                 jauna_virkne = virkne[:i] + mainitajs + virkne[i+2:]
                 #Uzstāda jaunos punktu skaitus
-                jauns_p1 = pasreizeja_virsotne.p1 + (2 if speletajs == 'O' and gajiena_tips == '1' else -1 if speletajs == 'X' and gajiena_tips == '2' else 0)
-                jauns_p2 = pasreizeja_virsotne.p2 + (2 if speletajs == 'X' and gajiena_tips == '1' else -1 if speletajs == 'O' and gajiena_tips == '2' else 0)
+
+                # Uzstāda jaunos punktu skaitus, pamatojoties uz spēlētāju un gājiena tipu
+                if speletajs == 'O':
+                    if gajiena_tips == '1':  # XX - O
+                        jauns_p1 = pasreizeja_virsotne.p1 + 2
+                        jauns_p2 = pasreizeja_virsotne.p2
+                    elif gajiena_tips == '2':  # XO - O 
+                        jauns_p1 = pasreizeja_virsotne.p1
+                        jauns_p2 = pasreizeja_virsotne.p2 - 1
+                elif speletajs == 'X':
+                    if gajiena_tips == '1':  # OO - X
+                        jauns_p2 = pasreizeja_virsotne.p2 + 2
+                        jauns_p1 = pasreizeja_virsotne.p1
+                    elif gajiena_tips == '2':  # OX - X
+                        jauns_p2 = pasreizeja_virsotne.p2
+                        jauns_p1 = pasreizeja_virsotne.p1 - 1
+
                 #Uzstāda nākošo līmeni
                 jauns_limenis = pasreizeja_virsotne.limenis + 1
                 #Piešķir jaunu virsotne id
