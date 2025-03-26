@@ -91,7 +91,7 @@ def galvenais_logs(VirkneString, SpeletajaSimbols, GajienaVeicejs):
         [sg.Text("Šī ir spēle ar X un O")],
         [sg.InputText(default_text=VirkneString, use_readonly_for_disable = True, enable_events = False, disabled = True, key = "-IN1-", background_color = "white", text_color = "black", justification = 'c')], #šaja - InputText - ievietos X un O rindu, varēs iezīmēt
         [Poga, sg.Push(), sg.Button("Aizvērt", key = "-B3-")],
-        [sg.Text(f"Gājienu tagad jāveic: {GajienaVeicejs} {SpeletajaSimbols}")],
+        [sg.Text(f"Gājienu tagad jāveic: {GajienaVeicejs} {SpeletajaSimbols}"), sg.Multiline(f"Iespējamie gājieni:\nX: 'OO' -> 'X', 'OX' -> 'X'\nO: 'XX' -> 'O', 'XO' -> 'O'", size = (20,3), disabled = True)],
     ]
 
     #Izveidojam speles logu
