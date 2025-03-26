@@ -36,7 +36,10 @@ def opcijas_logs():
     #P.S. Atslēgas nozīme ir, lai mēs varētu ar loop checkot un iegūt value un piesaistīt
     opciju_izkartojums = [
         [sg.Text("Šī ir spēle ar X un O"), sg.Push(), sg.Button("Sākt spēli", key="-SAKT-")],
+        [sg.Text('Ievadiet virknes garumu:'), sg.Slider((15,25), orientation = 'horizontal', key = '-VIRKNE-')],
+        [sg.VPush()],
         [sg.Text('Izvēlēties, kurš uzsāk spēli:'), sg.Combo(speletaju_opcijas, default_value=speletaju_opcijas[0], key='-SPELETAJS-')],
+        [sg.VPush()],
         [sg.Text('Izvēlēties, kuru algoritmu izmantos dators:'), sg.Combo(algoritma_opcijas, default_value=algoritma_opcijas[0], key='-ALGORITMS-')],
     ]
 

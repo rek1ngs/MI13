@@ -33,8 +33,6 @@ maksimizetajs = None
 # SPĒLES "DATUBĀZE" | IESTATĪJUMI
 # ----------------------------
 automatiski_genereta = True #Vai ģenerēt virkni vai arī izmantot statiski ievadītu
-automatiski_generatas_virknes_garums_min = 15 #Minimālais garums virknei
-automatiski_generatas_virknes_garums_max = 25 #Maksimālais garums virknei
 statiska_virkne = 'XOOXXO' #Statiskā virkne, kas tiks izvēlēta, ja tiks izslēgta automātiskās ģenerēšanas funkcija
 dzilums = 4 #Šis norāda cik dziļi koks ģenerēs virsotnes, ņemot verā, ka resursu nav pietiekami, lai visu koku ģenerētu
 izvadit = True #Vai pēc katra gājiena izvadīt daļējo koku terminālī?
@@ -57,6 +55,7 @@ iestatijumi = MI_GUI.opcijas_logs() #Tiek izsaukts opciju logs, turpinājumu mek
 izmantotais_algoritms = iestatijumi['-ALGORITMS-'] #Tālāk no mainīgā iestatijumi tiek izvlikts izvēlētais algoritms (saglabā "datubāzē" vēlākai lietošanai)
 speletajs_1 = iestatijumi['-SPELETAJS-'] #Tālāk no mainīgā iestatijumi tiek izvlikts izvēlētais primais spēlētājs (saglabā "datubāzē" vēlākai lietošanai)
 nakosais_gajiens = speletajs_1 #Uzstādam, ka pirmais gājiens būs arī pirmajam spēlētajam
+length = int(iestatijumi['-VIRKNE-']) #Spēlētāja iestatītais virknes garums
 
 #Attiecīgi uzstādām pēc loģikas otro spēlētāju
 if speletajs_1 == 'Dators':
@@ -80,7 +79,7 @@ else:
 # Kad saņemta atbilde, tad mēs sagatavojamies spēlei
 # 2.1 | Tiek ģenerēta nejauša virkne, ja automātiskā ģenerēšana ir ieslēgta
 if automatiski_genereta == True:
-    sobrideja_virkne = ''.join(random.choices('XO' , k=random.randint(automatiski_generatas_virknes_garums_min, automatiski_generatas_virknes_garums_max))) # Attiecīgi no izvēlēm "XO" izvēlēsies k skaitu, ko savienos ar join.
+    sobrideja_virkne = ''.join(random.choices('XO' , k = length)) # Attiecīgi no izvēlēm "XO" izvēlēsies k skaitu, ko savienos ar join.
 else:
     sobrideja_virkne = statiska_virkne # Savādāk, ja automatiskā ģenerēšana ir izslēgta, tad mēs šobrīdējo virkni uzstādam statisko virkni, kas definēta iestatījumos
 
