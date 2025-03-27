@@ -36,6 +36,7 @@ def opcijas_logs():
     #P.S. Atslēgas nozīme ir, lai mēs varētu ar loop checkot un iegūt value un piesaistīt
     opciju_izkartojums = [
         [sg.Text("Šī ir spēle ar X un O"), sg.Push(), sg.Button("Sākt spēli", key="-SAKT-")],
+        [sg.HorizontalSeparator()],
         [sg.Text('Ievadiet virknes garumu:'), sg.Slider((15,25), orientation = 'horizontal', key = '-VIRKNE-')],
         [sg.VPush()],
         [sg.Text('Izvēlēties, kurš uzsāk spēli:'), sg.Combo(speletaju_opcijas, default_value=speletaju_opcijas[0], key='-SPELETAJS-')],
@@ -89,7 +90,7 @@ def galvenais_logs(VirkneString, SpeletajaSimbols, GajienaVeicejs):
     #- sg.ImputText ir teksta lodziņš, kurā (readonly_for_disable nozīmē, ka nav grayed out, bet nevar editot) (enable_events izslēdz opciju izpildīt eventus) (disabled neatļauj editot) (justification ir centrēšana 'c')
     galvenais_izkartojums = [
         [sg.Text("Šī ir spēle ar X un O")],
-        [sg.InputText(default_text=VirkneString, use_readonly_for_disable = True, enable_events = False, disabled = True, key = "-IN1-", background_color = "white", text_color = "black", justification = 'c')], #šaja - InputText - ievietos X un O rindu, varēs iezīmēt
+        [sg.Push(), sg.InputText(default_text=VirkneString, use_readonly_for_disable = True, enable_events = False, disabled = True, key = "-IN1-", background_color = "white", text_color = "black", justification = 'c'), sg.Push()], #šaja - InputText - ievietos X un O rindu, varēs iezīmēt
         [Poga, sg.Push(), sg.Button("Aizvērt", key = "-B3-")],
         [sg.Text(f"Gājienu tagad jāveic: {GajienaVeicejs} {SpeletajaSimbols}"), sg.Multiline(f"Iespējamie gājieni:\nX: 'OO' -> 'X', 'OX' -> 'X'\nO: 'XX' -> 'O', 'XO' -> 'O'", size = (20,3), disabled = True)],
     ]
@@ -200,6 +201,7 @@ def beigu_logs(Uzvaretajs, Speletajs, Dators):
     #P.S. Atslēgas nozīme ir, lai mēs varētu ar loop checkot un iegūt value un piesaistīt
     beigu_izkartojums = [
         [sg.Text("Šī ir spēle ar X un O"), sg.Push(), sg.Button("Spēlēt vēlreiz", key="-VELREIZ-")],
+        [sg.HorizontalSeparator()],
         [sg.Text(f"Uzvarēja: {Uzvaretajs}")],
         [sg.Text(f"Cilvēka punkti: {Speletajs}")],
         [sg.Text(f"Datora punkti: {Dators}")],
