@@ -1,6 +1,6 @@
 # MI13
 
-**IEVADS**
+**IEVADS**<br>
 Dotais pirmais praktiskais darbs ir izstrādāts Rīgas Tehniskās Universitātes (RTU) studiju programmas "Datorsistēmas" studiju kursa "Mākslīgā intelekta pamati (DSP332(1),24/25-P)" ietvaros.
 
 **KOMANDAS NUMURS**
