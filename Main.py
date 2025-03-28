@@ -1,5 +1,14 @@
-#pip3 install PySimpleGUI
-#python3 Main.py
+# ----------------------------
+# Informācijas avoti:
+# https://www.w3schools.com/python/
+# https://docs.python.org/3/library/sys.html#sys.exit
+# https://blog.petrzemek.net/2014/03/23/restarting-a-python-script-within-itself/
+#
+# Lai palaistu kodu uz Mac:
+# pip3 install PySimpleGUI | python3 Main.py
+# ----------------------------
+
+
 
 # ----------------------------
 # KODA SAGATAVOŠANA | IMPORTI
@@ -17,14 +26,14 @@ import sys #Bibliotēka, kas ļauj ietekmēt Pythona vidi pārtraukt kodu utml.
 # ----------------------------
 # SPĒLES "DATUBĀZE" | MAINĪGIE
 # ----------------------------
-izmantotais_algoritms = None #Šeit tiks saglabāts pēc izvēles izmantojamais algoritms
-speletajs_1 = None #Šeit tiks saglabāts pirmais spēlētājs 'Dators' vai 'Cilvēks'
-speletajs_2 = None #Šeit tiks saglabāts otrais spēlētājs 'Dators' vai 'Cilvēks'
-sobrideja_virkne = None #Šeit tiks saglabāta pašreizējā stāvokļa virkne
-nakosais_gajiens = None #Šeit tiks saglabāts, kam ir nākošais gājiens 'Dators' vai 'Cilvēks'
-speles_koks = None #Šeit tiks saglabāts spēles koks
+izmantotais_algoritms = None #Šeit tiks saglabāts pēc spēlētāja izvēles datora izmantojamais algoritms, kas tiek izmantots 187 rindā, kad datoram ir jāveic gājiens
+speletajs_1 = None #Šeit tiks saglabāts pirmais spēlētājs 'Dators' vai 'Cilvēks', kas ir nepieciešams, lai noteiktu spēlētaja simbolu un paziņotu rezultātus
+speletajs_2 = None #Šeit tiks saglabāts otrais spēlētājs 'Dators' vai 'Cilvēks', kas ir nepieciešams, lai noteiktu spēlētaja simbolu un paziņotu rezultātus
+sobrideja_virkne = None #Šeit tiks saglabāta pašreizējā stāvokļa virkne, kas tiek definēta pēc virknes ģenerēšanas un tiek atjaunināta ik pēc katra gājiena.
+nakosais_gajiens = None #Šeit tiks saglabāts, kam ir nākošais gājiens 'Dators' vai 'Cilvēks', kas tiek nomainīts ik pēc katra gājiena, lai mēs varētu noteikt spēles ciklā kam ir nākošais gājiens
+speles_koks = None #Šeit tiks saglabāts spēles koks, kas ir nepieciešams visos algoritmos un spēkes koka ģenerēšanā
 izveleta_virsotne = None #Šeit tiks saglabāta pēdējā izvēlētā virsotne, no kuras tiks tālāk ģenerēts koks
-maksimizetajs = None
+maksimizetajs = None # Šis saglabās kurš no spēlētājiem ir maksimizētajs, tas nepieciešams ir heiristikas funkcijai, lai noteiktu kuri gājieni iespējami
 
 
 
@@ -79,7 +88,7 @@ else:
 # Kad saņemta atbilde, tad mēs sagatavojamies spēlei
 # 2.1 | Tiek ģenerēta nejauša virkne, ja automātiskā ģenerēšana ir ieslēgta
 if automatiski_genereta == True:
-    sobrideja_virkne = ''.join(random.choices('XO' , k = length)) # Attiecīgi no izvēlēm "XO" izvēlēsies k skaitu, ko savienos ar join.
+    sobrideja_virkne = ''.join(random.choices('XO' , k = length)) # Attiecīgi no izvēlēm "XO" izvēlēsies k skaitu, ko savienos ar join. (Vairāk: https://www.w3schools.com/python/ref_random_choices.asp)
 else:
     sobrideja_virkne = statiska_virkne # Savādāk, ja automatiskā ģenerēšana ir izslēgta, tad mēs šobrīdējo virkni uzstādam statisko virkni, kas definēta iestatījumos
 
@@ -226,4 +235,4 @@ value = MI_GUI.beigu_logs(uzvaretajs, speletajs, dators)
 
 # Ja atgriež true, tas nozīmē, ka spēlētajs nospieda pogu "Spēlēt vēlreiz", tad notiek koda restartēšana
 if value == True:
-    os.execl(sys.executable, sys.executable, *sys.argv) #https://blog.petrzemek.net/2014/03/23/restarting-a-python-script-within-itself/
+    os.execl(sys.executable, sys.executable, *sys.argv) # Restartē visu kodu

@@ -1,13 +1,22 @@
+# ----------------------------
+# Informācijas avots Python:
+# https://www.w3schools.com/python/
+# ----------------------------
+
+
+
 import Heiristic
 
 
 # ----------------------------
 # MINIMAX FUNKCIJA
 # ----------------------------
-# Pēc https://graspcoding.com/build-a-tic-tac-toe-python-game-using-the-minimax-algorithm/ pseidokoda
-# Izmantojot ChatGTP + nedaudz pielabots
-# Tiek ievadīts funkcijā virsotne, dziļums, spēles koks un sākuma spēlētajs
-# Dators vienmēr būs maksimizētājs
+
+# Informācijas avots (Ghimire. Build a Tic-Tac-Toe Python Game using the minimax algorithm. Tiešsaistē. n. d. Pieejams: https://graspcoding.com/build-a-tic-tac-toe-python-game-using-the-minimax-algorithm/ [skatīts 03.03.2025.])
+# Modificēts no (Shalvale. Alpha-Beta pruning in Adversarial Search Algorithms. Tiešsaistē. n. d. Pieejams: https://www.geeksforgeeks.org/alpha-beta-pruning-in-adversarial-search-algorithms/ [skatīts 03.03.2025.])
+
+# ! Tiek ievadīts funkcijā virsotne, dziļums, spēles koks un sākuma spēlētajs
+# ! Dators vienmēr būs maksimizētājs
 def minimax(current_node, depth, game_tree, is_maximizing_player, maksimizetajs):
 
     # Tad mēs pārbaudām ja dziļums ir nulle (ja nav virsotnu) un vai ir gala virsotne (izsauc papildus funkciju)
@@ -48,8 +57,9 @@ def minimax(current_node, depth, game_tree, is_maximizing_player, maksimizetajs)
 # ----------------------------
 # ALFA BETA FUNKCIJA
 # ----------------------------
-# https://www.geeksforgeeks.org/alpha-beta-pruning-in-adversarial-search-algorithms/
-# Ar papildus labojumiem
+
+# Modificēts no (Shalvale. Alpha-Beta pruning in Adversarial Search Algorithms. Tiešsaistē. n. d. Pieejams: https://www.geeksforgeeks.org/alpha-beta-pruning-in-adversarial-search-algorithms/ [skatīts 03.03.2025.])
+
 
 
 def alpha_beta_pruning(current_node, depth, alpha, beta, game_tree, is_maximizing_player, maksimizetajs):
@@ -117,14 +127,16 @@ def alpha_beta_pruning(current_node, depth, alpha, beta, game_tree, is_maximizin
 # ----------------------------
 # PALĪGFUNKCIJAS ALGORITMIEM
 # ----------------------------
-# Izmantojot ChatGTP + nedaudz pielabots
+
+# !!!!!!!!!!!!!!!!!!!!!!
+# Aizgūts no (OpenAI. ChatGPT https://chatgtp.com/)
+# !!!!!!!!!!!!!!!!!!!!!!
+
 #Funckijas noskaidro vai ir strupceļvirsotne
 def is_terminal(node, game_tree):
     # Pārbauda vai virsotnei vairs nav bērnu, ja nav tad ta ir strupceļa
     return len(game_tree.loku_kopa.get(node.id, [])) == 0
 
-
-# Izmantojot ChatGTP + nedaudz pielabots
 #Funckija atrod virsotni no id
 def find_node_by_id(game_tree, node_id):
     # Ņemam katru virsotni no visas kopas

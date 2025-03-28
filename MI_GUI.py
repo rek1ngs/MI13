@@ -1,4 +1,12 @@
 # ----------------------------
+# Informācijas avots Python un PySimpleGUI
+# https://www.w3schools.com/python/
+# https://docs.pysimplegui.com/en/latest/
+# ----------------------------
+
+
+
+# ----------------------------
 # KODA SAGATAVOŠANA | IMPORTI
 # ----------------------------
 import PySimpleGUI as sg
@@ -8,11 +16,9 @@ import PySimpleGUI as sg
 # ----------------------------
 # SPĒLES "DATUBĀZE" | IESTATĪJUMI
 # ----------------------------
-#PySimpleGUI iestatījumi (https://docs.pysimplegui.com/en/latest/)
+#PySimpleGUI iestatījumi
 sg.theme("DarkBlack")
 sg.set_options(font=('Arial Bold', 16))
-
-
 
 
 
@@ -33,7 +39,8 @@ def opcijas_logs():
     #- sg.Text ir virsraksti
     #- sg.Button poga(nosaukums, atslēga)
     #- sg.Combo ir dropdown menu, kurā ieliek visas spēlētāju opcijas, uzstāde defaul value un iedot atslēgu
-    #P.S. Atslēgas nozīme ir, lai mēs varētu ar loop checkot un iegūt value un piesaistīt
+    #- sg.Slider ir slideris, kur var izvēlēties ģenerējamās virknes garumu
+    # P.S. Atslēgas nozīme ir, lai mēs varētu ar loop checkot un iegūt value un piesaistīt
     opciju_izkartojums = [
         [sg.Text("Šī ir spēle ar X un O"), sg.Push(), sg.Button("Sākt spēli", key="-SAKT-")],
         [sg.HorizontalSeparator()],
@@ -74,7 +81,7 @@ def opcijas_logs():
 #Funckija, kas tiek izsaukta no Main.py pēc opciju iestatīšanas
 #- VirkneString - Sākuma virkne
 #- Symbol - spēlētaja simbols, lai zinātu kurus gājienus var veikt
-# - GajienaVeicejs - spēlētājs, kuram ir tagad jāveic gājiens
+#- GajienaVeicejs - spēlētājs, kuram ir tagad jāveic gājiens
 def galvenais_logs(VirkneString, SpeletajaSimbols, GajienaVeicejs):
 
     #Sagatavojam pogas atkarībā no šobrīdējā spēletaja (jo, kad būs datora gājiens spelētājs redzēs datora izmaiņas un varēs turpinat kad vēlēsies)
@@ -133,9 +140,9 @@ def galvenais_logs(VirkneString, SpeletajaSimbols, GajienaVeicejs):
 # GĀJIENA PĀRBAUDE | FUNCKIJA
 # ----------------------------
 
-#
-# Izveidots ar čata palīdzību un modificēts/papildināts ar roku
-#
+# !!!!!!!!!!!!!!!!!!!!!!
+# Modificēts no (OpenAI. ChatGPT https://chatgtp.com/)
+# !!!!!!!!!!!!!!!!!!!!!!
 
 #Funkcija kas nodrošina iezīmēto simbolu kopēšanu un apstrādi izvadot gala virkni (ja varēja veikt to gājienu)
 def CopySymbol(SpeletajaSimbols, window1):
@@ -164,9 +171,11 @@ def CopySymbol(SpeletajaSimbols, window1):
     #Pārbaudam vai veiktais gājiens ir šajā sarakstā
     if SelectedText in iespejamie_gajieni:
         jaunais_simbols = iespejamie_gajieni[SelectedText]
+
         #Atrod sākumu un beigu elementu (indeksu) šajā Widget
         start = InputWidget.index("sel.first")
         end = InputWidget.index("sel.last")
+
         #Aizstājam šos divus simbolus ar jauno simbolu
         jauna_virkne = window1['-IN1-'].get()[:start] + jaunais_simbols + window1['-IN1-'].get()[end:]
 
@@ -175,8 +184,9 @@ def CopySymbol(SpeletajaSimbols, window1):
         window1.TKroot.clipboard_append(jauna_virkne)
         window1.TKroot.update()
         return True
+    
     else:
-        #Attiecīgi ja nav pareiz gājiens, tad ir popup
+        #Attiecīgi ja nav pareiz gājiens, tad ir popup ar paziņojumu
         sg.popup("Nevar veikt šādu gājienu. Mēģiniet vēlreiz!")
         return False
     

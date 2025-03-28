@@ -2,13 +2,17 @@
 # HEIRISTISKA FUNKCIJA
 # ----------------------------
 # Heiristiskajai funkcijai ir nepieciešams novērēt koka virsotnes, piešķirt tām vērtības, tā, lai varētu noteikt labāko ceļu.
+#
 # Izpētot doto spēli ir secināmi potenciālie:
 # - punktu atšķirība starp abiem spēlētajiem
 # - XX un OO daudzums, jo tie vairāk dod punktus un mazāk otrs spēlētajs var kaut ko ietekmēt
-# Attiecīgi ja pirmais spēlētājs ir tad maksimizējam, ja otrai minimizējam
+# - XO un OX, kas samazina punktus pretiniekam
+#
+# ! Attiecīgi dators vienmēr būs maksimizētājs
 
 
 def heiristiska(virsotne, maksimizetajs):
+
     # Heiristiskās funkcijas izveide balstoties uz vērtībām:
     # 1. Punktu atšķirība, jo uzvar tas, kuram vairāk punktu un jo vairāk jo labāk
     # 2. Cik ir OO un XX pāri (atkarīgs no spēlētaja), jo piemēram O spēlētajam ir izdevīgāk, ja ir vairāk XX pāri, jo tos var aizstāt un no katra dabūt 2 punktus

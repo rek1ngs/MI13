@@ -1,4 +1,10 @@
-# KODA PAMATS (DATU STRUKTURA UN KOKA GENERESANA) -  2.2.TĒMA: SPĒLES KOKS - STĀVOKĻU TELPAS GRAFA PIELIETOJUMS
+# ----------------------------
+# Atsauce:
+# Modificēts no (Anohina-Naumeca, Mākslīgā intelekta pamati- stāvokļu telpas grafa pielietojums (Speles koks-gala_versija.ipynb). Tiešsaistē. https://estudijas.rtu.lv/mod/resource/view.php?id=5236743 [skatīts 23.02.2025.]
+#
+# Informācijas avots Python:
+# https://www.w3schools.com/python/
+# ----------------------------
 
 
 
@@ -76,6 +82,7 @@ def gajiena_parbaude(sp, generetas_virsotnes, pasreizeja_virsotne):
     #Tiek noteiktas visas iespējamās darbības
     # Spēlētajs X var mainit OO uz X un OX uz X
     # Spēlētājs O var mainīt XX uz O un XO uz O
+    # Informācijas avots: https://www.w3schools.com/python/python_dictionaries.asp
     iespejas = {
         'X': {'1': ('OO', 'X'), '2': ('OX', 'X')},
         'O': {'1': ('XX', 'O'), '2': ('XO', 'O')}
@@ -100,9 +107,10 @@ def gajiena_parbaude(sp, generetas_virsotnes, pasreizeja_virsotne):
         i = 0
         while i <= length and length > 1: #Kāmēr garums nepārsniedz i un kāmēr garums ir lielaks par vienu simbolu
             # Pārbaudam vai esošais un nākošais elements sakrīt ar mainamo
-            current_pattern = virkne[i:i+2]
-            #print(current_pattern)
-            if current_pattern == mainamais:
+            izveletie_simboli = virkne[i:i+2]
+            #print(izveletie_simboli)
+
+            if izveletie_simboli == mainamais:
                 # Ja sakrīt, tad aizstāj un iegūst jauno virkni [sakums:beigas] (+2 jo 2 neieskaita, tapec bus 2 simboli nevis 3)
                 jauna_virkne = virkne[:i] + mainitajs + virkne[i+2:]
                 #Uzstāda jaunos punktu skaitus
@@ -157,6 +165,7 @@ def gajiena_parbaude(sp, generetas_virsotnes, pasreizeja_virsotne):
 # ----------------------------
 # KOKS | FUNKCIJA, KAS INICIĒS KOKA ĢENERĒŠANU
 # ----------------------------
+
 # Izvada visu koku, kas ir ģenerēts noteiktam dziļumam
 # Funkcijā ievada spēles koku, izvēlēto virsotni, dziļumu (iestatījumi) un vai izdrukāt visu koku (iestatījumi)
 def generet_koku(speles_koks, virsotne, dzilums, drukat):
@@ -206,6 +215,7 @@ def generet_koku(speles_koks, virsotne, dzilums, drukat):
 # ----------------------------
 # KOKS | FUNKCIJA, KAS ATROD VIRSOTNI KOKĀ
 # ----------------------------
+
 # Funkcija, kas tiek izsaukta Main.py daļā, kur ievadām spēles koku, meklējamo virkni un sākuma virsotni
 def atrast_virsotni(speles_koks, virkne, izveleta_virsotne):
     # Ies cauri visām virsotnēm, kas ir kokā
